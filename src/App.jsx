@@ -15,7 +15,7 @@ import { getCategoryCompletionStates } from "./State/calculator";
 
 export default function App() {
   return (
-    <>
+    <div class="bg-neutral-800">
       <Navbar />
       <Router>
         <Routes>
@@ -39,7 +39,7 @@ export default function App() {
         </Routes>
       </Router>
       <Footer />
-    </>
+    </div>
   );
 }
 
