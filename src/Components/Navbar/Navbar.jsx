@@ -52,7 +52,7 @@ export default function Navbar() {
             </div>
             <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center  min-h-[250px]">
               <li className="border-b border-gray-400 my-8 uppercase">
-                <a href="/about">Waste Calc.</a>
+                <a href="/me/overview">Waste Calc.</a>
               </li>
               <li className="border-b border-gray-400 my-8 uppercase">
                 <a href="/portfolio">Statistics</a>
@@ -71,7 +71,7 @@ export default function Navbar() {
 
         <ul className="DESKTOP-MENU hidden space-x-8 lg:flex text-lg ml-2">
           <li>
-            <a href="/about">Waste Calc.</a>
+            <a href="/me/overview">Waste Calc.</a>
           </li>
           <li>
             <a href="/portfolio">Statistics</a>

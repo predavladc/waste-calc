@@ -16,6 +16,12 @@ export const [getElectricityFormInfo, setElectricityFormInfo] = createSignal(
             avgUsage: 24,
           },
         ],
+        heaters: [
+          {
+            power: 4000,
+            avgUsage: 3,
+          },
+        ],
       }
 );
 
@@ -25,8 +31,10 @@ export const [getCategorySelectedStates, setCategorySelectedStates] =
   createSignal({
     AC: true,
     fridge: true,
+    heater: true,
   });
 
+// Add Button Section
 export const addAircon = () => {
   setElectricityFormInfo((p) => ({
     ...p,
@@ -40,6 +48,21 @@ export const addAircon = () => {
   }));
 };
 
+export const addFridge = () => {
+  setElectricityFormInfo((p) => ({
+    ...p,
+    fridges: [
+      ...p.fridges,
+      {
+        power: 150,
+        avgUsage: 24,
+      },
+    ],
+  }));
+};
+
+//Update section
+
 export const updateAircon = (i, label, value) => {
   const _updatedAircons = [...getElectricityFormInfo().aircons];
   _updatedAircons[i][label] = value;
@@ -50,6 +73,18 @@ export const updateAircon = (i, label, value) => {
     //index === i ? { ...aircon, [label]: value } : aircon
   }));
 };
+export const updateFridge = (i, label, value) => {
+  const _updatedFridges = [...getElectricityFormInfo().fridges];
+  _updatedFridges[i][label] = value;
+
+  setElectricityFormInfo((p) => ({
+    ...p,
+    fridges: _updatedFridges,
+    //index === i ? { ...aircon, [label]: value } : aircon
+  }));
+};
+
+//Delete section
 export const deleteAircon = (i) => {
   console.log(i);
   setElectricityFormInfo((p) => {
@@ -65,6 +100,23 @@ export const deleteAircon = (i) => {
     return newState;
   });
 };
+export const deleteFridge = (i) => {
+  console.log(i);
+  setElectricityFormInfo((p) => {
+    const newState = {
+      ...p,
+      fridges: p.fridges.filter((ac, j) => {
+        console.log({ i, j });
+        return j !== i;
+      }),
+      //index === i ? { ...aircon, [label]: value } : aircon
+    };
+    console.log(newState);
+    return newState;
+  });
+};
+
+//States
 
 export const [getCategoryCompletionStates, setCategoryCompletionStates] =
   createSignal({
@@ -77,14 +129,14 @@ export const [getCategoryCompletionStates, setCategoryCompletionStates] =
 
 export const getAirconMonthEst = getElectricityFormInfo().aircons.reduce(
   (total, aircon) => {
-    return (total + aircon.power * aircon.avgUsage * 30) / 1000;
+    return total + (aircon.power * aircon.avgUsage * 30) / 1000;
   },
   0
 );
 
-export const fridgesPowerEst = getElectricityFormInfo().fridges.reduce(
+export const getfridgesPowerEst = getElectricityFormInfo().fridges.reduce(
   (total, fridge) => {
-    return total + fridge.power * fridge.avgUsage;
+    return Math.round(total + (fridge.power * fridge.avgUsage * 30) / 2 / 1000);
   },
   0
 );
