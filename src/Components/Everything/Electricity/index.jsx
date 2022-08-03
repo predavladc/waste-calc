@@ -11,25 +11,25 @@ function Electricity() {
         </button>{" "}
       </Link>
 
-      <Link href="../../me/electricity/fridge">
+      <Link href="/me/electricity/fridge">
         {" "}
         <button class="text-2xl py-2 bg-green-600 m-4 p-10  hover:bg-green-900 rounded-md  ">
           fridge
         </button>
       </Link>
-      <Link href="../../me/electricity/heater">
+      <Link href="/me/electricity/heater">
         {" "}
         <button class="text-2xl py-2 bg-green-600 m-4 p-10  hover:bg-green-900 rounded-md  ">
           heater
         </button>
       </Link>
-      <Link href="../../me/electricity/lighting">
+      <Link href="/me/electricity/lighting">
         {" "}
         <button class="text-2xl py-2 bg-green-600 m-4 p-10  hover:bg-green-900 rounded-md  ">
           lighting
         </button>
       </Link>
-      <Link href="../../me/electricity/washing-machine">
+      <Link href="/me/electricity/washing-machine">
         {" "}
         <button class="text-2xl py-2 bg-green-600 m-4 p-10  hover:bg-green-900 rounded-md  ">
           washing-machine

@@ -61,6 +61,19 @@ export const addFridge = () => {
   }));
 };
 
+export const addHeater = () => {
+  setElectricityFormInfo((p) => ({
+    ...p,
+    heaters: [
+      ...p.heaters,
+      {
+        power: 4000,
+        avgUsage: 3,
+      },
+    ],
+  }));
+};
+
 //Update section
 
 export const updateAircon = (i, label, value) => {
@@ -80,6 +93,16 @@ export const updateFridge = (i, label, value) => {
   setElectricityFormInfo((p) => ({
     ...p,
     fridges: _updatedFridges,
+    //index === i ? { ...aircon, [label]: value } : aircon
+  }));
+};
+export const updateHeater = (i, label, value) => {
+  const _updatedHeaters = [...getElectricityFormInfo().heaters];
+  _updatedHeaters[i][label] = value;
+
+  setElectricityFormInfo((p) => ({
+    ...p,
+    heaters: _updatedHeaters,
     //index === i ? { ...aircon, [label]: value } : aircon
   }));
 };
@@ -115,6 +138,21 @@ export const deleteFridge = (i) => {
     return newState;
   });
 };
+export const deleteHeater = (i) => {
+  console.log(i);
+  setElectricityFormInfo((p) => {
+    const newState = {
+      ...p,
+      heaters: p.heaters.filter((ac, j) => {
+        console.log({ i, j });
+        return j !== i;
+      }),
+      //index === i ? { ...aircon, [label]: value } : aircon
+    };
+    console.log(newState);
+    return newState;
+  });
+};
 
 //States
 
@@ -140,6 +178,13 @@ export const getfridgesPowerEst = getElectricityFormInfo().fridges.reduce(
   },
   0
 );
+
+// export const getHeaterMonthEst = getElectricityFormInfo().heaters.reduce(
+//   (total, heater) => {
+//     return total + (heater.power * heater.avgUsage * 30) / 1000;
+//   },
+//   0
+// );
 
 createEffect(
   () =>
