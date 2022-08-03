@@ -2,3 +2,5 @@ node_modules
 dist
 Untitled-1.txt
 Fridge2.jsx
+# Local Netlify folder
+.netlify
