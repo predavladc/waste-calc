@@ -17,27 +17,29 @@ export default function App() {
   return (
     <div class="bg-neutral-800">
       <Navbar />
-      <Router>
-        <Routes>
-          <Route path="/" element={Home} />
-          <Route path="/me/" element={Profile} />
-          <Route path="/me/overview" element={Overview} />
-          <Route path="/me/electricity" element={Electricity} />
-          <Route path="/me/electricity/ac" element={AC} />
-          <Route path="/me/electricity/heater" element={Heater} />
-          <Route path="/me/electricity/fridge" element={Fridge} />
-          <Route path="/me/electricity/lighting" element={Lighting} />
-          <Route
-            path="/me/electricity/washing-machine"
-            element={WashingMachine}
-          />
-          <Route path="/me/electricity/total" element={ElecTotal} />
-          <Route
-            path="/about"
-            element={<div>This site was made with Solid</div>}
-          />
-        </Routes>
-      </Router>
+      <div class="pb-60">
+        <Router>
+          <Routes>
+            <Route path="/" element={Home} />
+            <Route path="/me/" element={Profile} />
+            <Route path="/me/overview" element={Overview} />
+            <Route path="/me/electricity" element={Electricity} />
+            <Route path="/me/electricity/ac" element={AC} />
+            <Route path="/me/electricity/heater" element={Heater} />
+            <Route path="/me/electricity/fridge" element={Fridge} />
+            <Route path="/me/electricity/lighting" element={Lighting} />
+            <Route
+              path="/me/electricity/washing-machine"
+              element={WashingMachine}
+            />
+            <Route path="/me/electricity/total" element={ElecTotal} />
+            <Route
+              path="/about"
+              element={<div>This site was made with Solid</div>}
+            />
+          </Routes>
+        </Router>
+      </div>
       <Footer />
     </div>
   );

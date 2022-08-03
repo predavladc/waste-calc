@@ -19,6 +19,8 @@ export const [getElectricityFormInfo, setElectricityFormInfo] = createSignal(
       }
 );
 
+// electricity.aircons[5].power = 1000
+
 export const [getCategorySelectedStates, setCategorySelectedStates] =
   createSignal({
     AC: true,
@@ -31,11 +33,37 @@ export const addAircon = () => {
     aircons: [
       ...p.aircons,
       {
-        power: 2,
-        avgUsage: 200,
+        power: 900,
+        avgUsage: 3,
       },
     ],
   }));
+};
+
+export const updateAircon = (i, label, value) => {
+  const _updatedAircons = [...getElectricityFormInfo().aircons];
+  _updatedAircons[i][label] = value;
+
+  setElectricityFormInfo((p) => ({
+    ...p,
+    aircons: _updatedAircons,
+    //index === i ? { ...aircon, [label]: value } : aircon
+  }));
+};
+export const deleteAircon = (i) => {
+  console.log(i);
+  setElectricityFormInfo((p) => {
+    const newState = {
+      ...p,
+      aircons: p.aircons.filter((ac, j) => {
+        console.log({ i, j });
+        return j !== i;
+      }),
+      //index === i ? { ...aircon, [label]: value } : aircon
+    };
+    console.log(newState);
+    return newState;
+  });
 };
 
 export const [getCategoryCompletionStates, setCategoryCompletionStates] =
@@ -49,7 +77,7 @@ export const [getCategoryCompletionStates, setCategoryCompletionStates] =
 
 export const getAirconMonthEst = getElectricityFormInfo().aircons.reduce(
   (total, aircon) => {
-    return total + aircon.power * aircon.avgUsage;
+    return (total + aircon.power * aircon.avgUsage * 30) / 1000;
   },
   0
 );
