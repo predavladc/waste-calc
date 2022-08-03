@@ -2,6 +2,9 @@ import {
   getElectricityFormInfo,
   setElectricityFormInfo,
   addAircon,
+  getAirconMonthEst,
+  updateAircon,
+  deleteAircon,
 } from "../../../State/calculator";
 
 function AC() {
@@ -28,8 +31,14 @@ function AC() {
   };
 
   return (
-    <div class="bg-neutral-800">
-      <button onClick={addAircon}>add aircon</button>
+    <div class="bg-neutral-800 text-neutral-200">
+      <button
+        class="text-2xl py-3 bg-green-600 m-3 p-4 hover:bg-green-900 rounded-2xl mt-4"
+        onClick={addAircon}
+      >
+        Add aircon
+      </button>
+      <p>{getAirconMonthEst()} kW/month</p>
       <div class="flex flex-wrap">
         {getElectricityFormInfo().aircons.map((ac, i) => (
           <form
@@ -39,54 +48,54 @@ function AC() {
             <div class="flex  flex-col space-y-2 self-center w-5/6">
               <h2 class="text-2xl">Air Conditioning unit #{i + 1} </h2>
 
-              {/* Number of ACs */}
               <input
                 type="range"
-                defaultValue="1"
+                value={ac.avgUsage}
                 min="1"
-                max="20"
+                max="24"
                 oninput={function (e) {
-                  setElectricityFormInfo((p) => ({
-                    ...p,
-                    airconNo: e.target.value,
-                  }));
+                  console.log(i, "avgUsage", e.target.value);
+                  updateAircon(i, "avgUsage", e.target.value);
                 }}
               />
               <output class="pb-10">
-                Number of units: {getElectricityFormInfo().airconNo}
-              </output>
-              {/* Hours AC is used per day */}
-              <output class="pb-10">
-                Numbers of hours used per day:{" "}
-                {getElectricityFormInfo().airconAvgUsage}
+                Average Hours used per Day {ac.avgUsage}
               </output>
 
               {/* Power draw per hour (in W) */}
               <input
+                name="power"
                 type="range"
-                value="1"
+                value={ac.power}
                 min="200"
                 max="4500"
                 step={100}
                 // defaultValue={1000}
                 oninput={function (e) {
-                  setElectricityFormInfo((p) => ({
-                    ...p,
-                    airconPower: e.target.value,
-                  }));
+                  // js array replace value in object of arrays useState
+                  console.log(i, "power", e.target.value);
+                  updateAircon(i, "power", e.target.value);
+                  // setElectricityFormInfo((p) => ({
+                  //   ...p,
+                  //   aircons: [
+                  //     ...p.aircons,
+                  //     {
+                  //       power: e.target.value,
+                  //     },
+                  //   ],
+                  // }));
                 }}
               />
-              <output>
-                Power Usage: {getElectricityFormInfo().airconPower} W/hour
-              </output>
-              <div>
-                <button
-                  class="text-2xl py-3 bg-green-600 m-3 p-4 hover:bg-green-900 rounded-2xl mt-4"
-                  type="submit"
-                >
-                  Add
-                </button>
-              </div>
+              <output>Power Usage:{ac.power} W/hour</output>
+              <button
+                class="text-2xl py-3 bg-green-600 m-3 p-4 hover:bg-green-900 rounded-2xl mt-4"
+                onClick={(e) => {
+                  e.preventDefault();
+                  deleteAircon(i);
+                }}
+              >
+                Delete
+              </button>
             </div>
           </form>
         ))}

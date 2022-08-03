@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className="bg-black md:flex md:justify-between shadow-lg text-neutral-200 absolute bottom-0 border-b py-2 px-2 w-screen flex-col border-t-2 border-t-green-600 space-y-1">
+    <div className="bg-black md:flex md:justify-between shadow-lg text-neutral-200  bottom-0 border-b py-2 px-2 w-screen flex-col border-t-2 border-t-green-600 space-y-1 fixed">
       <h2 class="text-3xl">Share and Save the World:</h2>
       <div>
         {/* facebook */}
