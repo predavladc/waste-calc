@@ -2,7 +2,7 @@ import {
   getElectricityFormInfo,
   setElectricityFormInfo,
   addHeater,
-  // getHeaterMonthEst,
+  getHeaterMonthEst,
   updateHeater,
   deleteHeater,
 } from "../../../State/calculator";
@@ -21,7 +21,7 @@ function Heater() {
       >
         Add Heater
       </button>
-      {/* <p>{getHeaterMonthEst()} kW/month</p> */}
+      <p>{getHeaterMonthEst()} kW/month</p>
       <div class="flex flex-wrap w-screen flex-shrink">
         {getElectricityFormInfo().heaters.map((heater, i) => (
           <form
