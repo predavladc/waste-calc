@@ -22,6 +22,12 @@ export const [getElectricityFormInfo, setElectricityFormInfo] = createSignal(
             avgUsage: 3,
           },
         ],
+        lights: [
+          {
+            power: 35,
+            avgUsage: 4,
+          },
+        ],
       }
 );
 
@@ -32,6 +38,7 @@ export const [getCategorySelectedStates, setCategorySelectedStates] =
     AC: true,
     fridge: true,
     heater: true,
+    lighting: true,
   });
 
 // Add Button Section
@@ -73,6 +80,18 @@ export const addHeater = () => {
     ],
   }));
 };
+export const addLight = () => {
+  setElectricityFormInfo((p) => ({
+    ...p,
+    lights: [
+      ...p.lights,
+      {
+        power: 35,
+        avgUsage: 4,
+      },
+    ],
+  }));
+};
 
 //Update section
 
@@ -93,7 +112,6 @@ export const updateFridge = (i, label, value) => {
   setElectricityFormInfo((p) => ({
     ...p,
     fridges: _updatedFridges,
-    //index === i ? { ...aircon, [label]: value } : aircon
   }));
 };
 export const updateHeater = (i, label, value) => {
@@ -103,7 +121,27 @@ export const updateHeater = (i, label, value) => {
   setElectricityFormInfo((p) => ({
     ...p,
     heaters: _updatedHeaters,
-    //index === i ? { ...aircon, [label]: value } : aircon
+  }));
+};
+
+export const updateLight = (i, label, value) => {
+  const _updatedLight = [...getElectricityFormInfo().lights];
+  _updatedLight[i][label] = value;
+
+  setElectricityFormInfo((p) => ({
+    ...p,
+    lights: _updatedLight,
+  }));
+};
+
+export const tryingLightThing = (i, label, value) => {
+  const _targetLight = [...getElectricityFormInfo().lights];
+  _targetLight[i][label] = value;
+  console.log(_targetLight);
+
+  setElectricityFormInfo((p) => ({
+    ...p,
+    lights: _targetLight,
   }));
 };
 
@@ -132,7 +170,6 @@ export const deleteFridge = (i) => {
         console.log({ i, j });
         return j !== i;
       }),
-      //index === i ? { ...aircon, [label]: value } : aircon
     };
     console.log(newState);
     return newState;
@@ -147,7 +184,20 @@ export const deleteHeater = (i) => {
         console.log({ i, j });
         return j !== i;
       }),
-      //index === i ? { ...aircon, [label]: value } : aircon
+    };
+    console.log(newState);
+    return newState;
+  });
+};
+export const deleteLight = (i) => {
+  console.log(i);
+  setElectricityFormInfo((p) => {
+    const newState = {
+      ...p,
+      lights: p.lights.filter((ac, j) => {
+        console.log({ i, j });
+        return j !== i;
+      }),
     };
     console.log(newState);
     return newState;
@@ -179,12 +229,18 @@ export const getfridgesPowerEst = getElectricityFormInfo().fridges.reduce(
   0
 );
 
-// export const getHeaterMonthEst = getElectricityFormInfo().heaters.reduce(
-//   (total, heater) => {
-//     return total + (heater.power * heater.avgUsage * 30) / 1000;
-//   },
-//   0
-// );
+export const getHeaterMonthEst = getElectricityFormInfo().heaters.reduce(
+  (total, heater) => {
+    return Math.round(total + (heater.power * heater.avgUsage * 30) / 1000);
+  },
+  0
+);
+export const getLightMonthEst = getElectricityFormInfo().lights.reduce(
+  (total, light) => {
+    return Math.round(total + (light.power * light.avgUsage * 30) / 1000);
+  },
+  0
+);
 
 createEffect(
   () =>
