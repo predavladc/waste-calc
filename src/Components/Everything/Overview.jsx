@@ -11,12 +11,12 @@ function Overview() {
           </button>
         </Link>{" "}
         <Link href="">
-          <button class="text-2xl py-3 bg-green-600 m-3 p-10 hover:bg-green-900 rounded-lg mt-4">
+          <button class="text-2xl py-3 bg-green-600 m-3 p-10 hover:bg-green-900 rounded-lg mt-4 disabled">
             Water
           </button>
         </Link>{" "}
         <Link href="">
-          <button class="text-2xl py-3 bg-green-600 m-3 p-10  hover:bg-green-900 rounded-lg mt-4">
+          <button class="text-2xl py-3 bg-green-600 m-3 p-10  hover:bg-green-900 rounded-lg mt-4 disabled">
             Plastics
           </button>
         </Link>
