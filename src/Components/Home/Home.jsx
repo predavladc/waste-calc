@@ -2,8 +2,8 @@ import { Link } from "@solidjs/router";
 
 function Home() {
   return (
-    <div class="flex justify-center w-screen text-neutral-200 bg-neutral-800 h-screen text-center">
-      <div class="space-y-4">
+    <div class="flex justify-center w-screen text-neutral-200 bg-neutral-800 h-screen text-center align-middle">
+      <div class="space-y-4 flex flex-col">
         <p class="text-4xl  pt-3 ">Waste Calculator</p>
         <img
           class=" border-t-black object-contain h-1/3 md:h-1/2"

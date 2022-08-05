@@ -7,6 +7,7 @@ import {
   deleteLight,
   tryingLightThing,
 } from "../../../State/calculator";
+import { BULB_TYPE_ENUM } from "../../../enums";
 
 function Lighting() {
   const handleSubmit = (event) => {
@@ -66,40 +67,55 @@ function Lighting() {
                 <p class=" font-bold">OR</p>
                 Select one of the following presets:
                 <div>
-                  <input
-                    type="radio"
+                  <button
                     id="led"
-                    name={light.power}
-                    value={5}
-                    oninput={function (e) {
-                      tryingLightThing(i, "power", e.target.value);
+                    class={`p-3 px-6 border-4 rounded-lg m-1 ${
+                      light.type === BULB_TYPE_ENUM.LED
+                        ? "border-green-300"
+                        : "border-stone-200"
+                    }`}
+                    onClick={function (e) {
+                      console.log(`${BULB_TYPE_ENUM.LED} clicked.`);
+                      tryingLightThing(i, "power", 5);
+                      tryingLightThing(i, "type", BULB_TYPE_ENUM.LED);
                     }}
-                  />
-                  <label for="led">LED</label>
+                  >
+                    {BULB_TYPE_ENUM.LED}
+                  </button>
                 </div>
                 <div>
-                  <input
-                    type="radio"
+                  <button
                     id="halogen"
-                    name={light.power}
-                    value={30}
-                    oninput={function (e) {
-                      tryingLightThing(i, "power", e.target.value);
+                    class={`p-3 px-6 border-4 rounded-lg m-1 ${
+                      light.type === BULB_TYPE_ENUM.Halogen
+                        ? "border-green-300"
+                        : "border-stone-200"
+                    }`}
+                    onClick={function (e) {
+                      console.log(`${BULB_TYPE_ENUM.Halogen} clicked.`);
+                      tryingLightThing(i, "power", 30);
+                      tryingLightThing(i, "type", BULB_TYPE_ENUM.Halogen);
                     }}
-                  />
-                  <label for="halogen">Halogen</label>
+                  >
+                    {BULB_TYPE_ENUM.Halogen}
+                  </button>
                 </div>
                 <div>
-                  <input
-                    type="radio"
+                  <button
                     id="incandescent"
-                    name={light.power}
-                    value={60}
-                    oninput={function (e) {
-                      tryingLightThing(i, "power", e.target.value);
+                    class={`p-3 px-6 border-4 rounded-xl m-1  ${
+                      light.type === BULB_TYPE_ENUM.Incandescent
+                        ? "border-green-300"
+                        : "border-stone-200"
+                    }`}
+                    onClick={function (e) {
+                      console.log(`${BULB_TYPE_ENUM.Incandescent} clicked.`);
+                      tryingLightThing(i, "power", 60);
+                      tryingLightThing(i, "type", BULB_TYPE_ENUM.Incandescent);
                     }}
-                  />
-                  <label for="incandescent">Incandescent</label>
+                  >
+                    {BULB_TYPE_ENUM.Incandescent}
+                  </button>
                 </div>
               </div>
               <button
