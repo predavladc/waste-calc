@@ -1,4 +1,5 @@
 import { createSignal, createEffect } from "solid-js";
+import { BULB_TYPE_ENUM } from "../enums";
 
 export const [getElectricityFormInfo, setElectricityFormInfo] = createSignal(
   localStorage.getItem("electricityFormInfo")
@@ -26,6 +27,7 @@ export const [getElectricityFormInfo, setElectricityFormInfo] = createSignal(
           {
             power: 35,
             avgUsage: 4,
+            type: BULB_TYPE_ENUM.Halogen,
           },
         ],
         washingMachines: [
