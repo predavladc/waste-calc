@@ -28,6 +28,12 @@ export const [getElectricityFormInfo, setElectricityFormInfo] = createSignal(
             avgUsage: 4,
           },
         ],
+        washingMachines: [
+          {
+            power: 500,
+            avgUsage: 1,
+          },
+        ],
       }
 );
 
@@ -92,6 +98,18 @@ export const addLight = () => {
     ],
   }));
 };
+export const addWashingMachine = () => {
+  setElectricityFormInfo((p) => ({
+    ...p,
+    washingMachines: [
+      ...p.washingMachines,
+      {
+        power: 500,
+        avgUsage: 1,
+      },
+    ],
+  }));
+};
 
 //Update section
 
@@ -134,6 +152,17 @@ export const updateLight = (i, label, value) => {
   }));
 };
 
+export const updateWashingMachine = (i, label, value) => {
+  const _updatedWashingMachine = [...getElectricityFormInfo().washingMachines];
+  _updatedWashingMachine[i][label] = value;
+
+  setElectricityFormInfo((p) => ({
+    ...p,
+    washingMachines: _updatedWashingMachine,
+  }));
+};
+
+//Radio buttons onInput
 export const tryingLightThing = (i, label, value) => {
   const _targetLight = [...getElectricityFormInfo().lights];
   _targetLight[i][label] = value;
@@ -204,6 +233,21 @@ export const deleteLight = (i) => {
   });
 };
 
+export const deleteWashingMachine = (i) => {
+  console.log(i);
+  setElectricityFormInfo((p) => {
+    const newState = {
+      ...p,
+      washingMachines: p.washingMachines.filter((ac, j) => {
+        console.log({ i, j });
+        return j !== i;
+      }),
+    };
+    console.log(newState);
+    return newState;
+  });
+};
+
 //States
 
 export const [getCategoryCompletionStates, setCategoryCompletionStates] =
@@ -241,6 +285,12 @@ export const getLightMonthEst = getElectricityFormInfo().lights.reduce(
   },
   0
 );
+export const getWashingMachineEst =
+  getElectricityFormInfo().washingMachines.reduce((total, WashingMachine) => {
+    return Math.round(
+      total + (WashingMachine.power * WashingMachine.avgUsage * 30) / 1000
+    );
+  }, 0);
 
 createEffect(
   () =>

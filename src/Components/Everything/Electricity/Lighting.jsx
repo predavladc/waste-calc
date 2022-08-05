@@ -62,44 +62,45 @@ function Lighting() {
               <output>Power Usage:{light.power} W/hour</output>
 
               {/* Radio Buttons */}
-
               <div>
-                <input
-                  type="radio"
-                  id="led"
-                  name={light.power}
-                  value={5}
-                  oninput={function (e) {
-                    tryingLightThing(i, "power", e.target.value);
-                  }}
-                />
-                <label for="led">LED</label>
-              </div>
-
-              <div>
-                <input
-                  type="radio"
-                  id="halogen"
-                  name={light.power}
-                  value={30}
-                  oninput={function (e) {
-                    tryingLightThing(i, "power", e.target.value);
-                  }}
-                />
-                <label for="halogen">Halogen</label>
-              </div>
-
-              <div>
-                <input
-                  type="radio"
-                  id="incandescent"
-                  name={light.power}
-                  value={60}
-                  oninput={function (e) {
-                    tryingLightThing(i, "power", e.target.value);
-                  }}
-                />
-                <label for="incandescent">Incandescent</label>
+                <p class=" font-bold">OR</p>
+                Select one of the following presets:
+                <div>
+                  <input
+                    type="radio"
+                    id="led"
+                    name={light.power}
+                    value={5}
+                    oninput={function (e) {
+                      tryingLightThing(i, "power", e.target.value);
+                    }}
+                  />
+                  <label for="led">LED</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="halogen"
+                    name={light.power}
+                    value={30}
+                    oninput={function (e) {
+                      tryingLightThing(i, "power", e.target.value);
+                    }}
+                  />
+                  <label for="halogen">Halogen</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="incandescent"
+                    name={light.power}
+                    value={60}
+                    oninput={function (e) {
+                      tryingLightThing(i, "power", e.target.value);
+                    }}
+                  />
+                  <label for="incandescent">Incandescent</label>
+                </div>
               </div>
               <button
                 class="text-2xl py-3 bg-green-600 m-3 p-4 hover:bg-green-900 rounded-2xl mt-4"
