@@ -7,32 +7,32 @@ function Electricity() {
       <Link href="/me/electricity/ac">
         {" "}
         <button class="text-2xl py-2 bg-green-600 m-4 p-10  hover:bg-green-900 rounded-md  ">
-          AC
+          Air Conditioning
         </button>{" "}
       </Link>
 
       <Link href="/me/electricity/fridge">
         {" "}
         <button class="text-2xl py-2 bg-green-600 m-4 p-10  hover:bg-green-900 rounded-md  ">
-          fridge
+          Fridge
         </button>
       </Link>
       <Link href="/me/electricity/heater">
         {" "}
         <button class="text-2xl py-2 bg-green-600 m-4 p-10  hover:bg-green-900 rounded-md  ">
-          heater
+          Heater
         </button>
       </Link>
       <Link href="/me/electricity/lighting">
         {" "}
         <button class="text-2xl py-2 bg-green-600 m-4 p-10  hover:bg-green-900 rounded-md  ">
-          lighting
+          Lighting
         </button>
       </Link>
       <Link href="/me/electricity/washing-machine">
         {" "}
         <button class="text-2xl py-2 bg-green-600 m-4 p-10  hover:bg-green-900 rounded-md  ">
-          washing-machine
+          Washing Machine
         </button>
       </Link>
     </div>
