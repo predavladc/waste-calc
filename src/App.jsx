@@ -15,9 +15,9 @@ import { getCategoryCompletionStates } from "./State/calculator";
 
 export default function App() {
   return (
-    <div class="bg-neutral-800">
+    <div class="bg-neutral-800 relative w-screen min-h-fit">
       <Navbar />
-      <div class="pb-60">
+      <div class=" w-screen text-neutral-200 bg-neutral-800 text-center align-middle min-h-100">
         <Router>
           <Routes>
             <Route path="/" element={Home} />

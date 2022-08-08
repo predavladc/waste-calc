@@ -86,14 +86,11 @@ export default function Navbar() {
       </nav>
       <style>{`
           .hideMenuNav {
-            display: none;
-          }
-          .showMenuNav {
-            display: block;
             position: absolute;
+            top: -400px;
+            display: block;
             width: 100%;
-            height: 100vh;
-            top: 0;
+            height: auto;
             left: 0;
             background: rgb(18, 135, 45);
             z-index: 10;
@@ -101,7 +98,24 @@ export default function Navbar() {
             flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
+            transition: top 1s ease-in-out;
           }
+          .showMenuNav {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: auto;
+            top: 0px;
+            left: 0;
+            background: rgb(18, 135, 45);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            transition: top 1s ease-in-out;
+          }
+}
         `}</style>
     </div>
   );

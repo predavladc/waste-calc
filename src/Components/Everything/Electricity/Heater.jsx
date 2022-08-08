@@ -14,7 +14,7 @@ function Heater() {
   };
 
   return (
-    <div class="bg-neutral-800 text-neutral-200 snap-center">
+    <div class="bg-neutral-800 text-neutral-200 snap-center h-screen">
       <button
         class="text-2xl py-3 bg-green-600 m-3 p-4 hover:bg-green-900 rounded-2xl mt-4"
         onClick={addHeater}
@@ -42,7 +42,7 @@ function Heater() {
                 }}
               />
               <output class="pb-10">
-                Average Hours used per Day {heater.avgUsage}
+                Average Hours used per Day: {heater.avgUsage}
               </output>
 
               {/* Power draw per hour (in W) */}
@@ -58,7 +58,7 @@ function Heater() {
                   updateHeater(i, "power", e.target.value);
                 }}
               />
-              <output>Power Usage:{heater.power} W/hour</output>
+              <output>Power Usage: {heater.power} W/hour</output>
               <button
                 class="text-2xl py-3 bg-green-600 m-3 p-4 hover:bg-green-900 rounded-2xl mt-4"
                 onClick={(e) => {
