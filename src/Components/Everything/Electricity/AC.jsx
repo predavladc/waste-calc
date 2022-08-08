@@ -8,30 +8,13 @@ import {
 } from "../../../State/calculator";
 
 function AC() {
-  // const elecCalcAC = () => {
-  //   const avgHrMonth = getElectricityFormInfo().airconAvgUsage * 30;
-  //   console.log(
-  //     (avgHrMonth *
-  //       (getElectricityFormInfo().airconNo *
-  //         getElectricityFormInfo().airconPower)) /
-  //       1000
-  //   );
-  // };
-
-  // const handleChange = (event) => {
-  //   setElectricityFormInfo((p) => ({
-  //     ...p,
-  //     [event.target.name]: event.target.value,
-  //   }));
-  // };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("!!!!!!!!", getElectricityFormInfo());
   };
 
   return (
-    <div class="bg-neutral-800 text-neutral-200 snap-center min-h-100 pb-44">
+    <div class="bg-neutral-800 text-neutral-200 snap-center min-h-screen pb-44">
       <button
         class="text-2xl py-3 bg-green-600 m-3 p-4 hover:bg-green-900 rounded-2xl mt-4"
         onClick={addAircon}
@@ -42,10 +25,10 @@ function AC() {
       <div class="flex flex-wrap w-screen justify-center">
         {getElectricityFormInfo().aircons.map((ac, i) => (
           <form
-            class=" flex flex-col  text-neutral-200 bg-neutral-800 text-center  md:w-3/6 w-5/6 justify-items-center px-3"
+            class=" flex flex-col  text-neutral-200 bg-neutral-800 text-center  md:w-3/6 w-5/6 justify-items-center px-3 py-3"
             onSubmit={handleSubmit}
           >
-            <div class="flex flex-col space-y-2    ">
+            <div class="flex flex-col space-y-2">
               <h2 class="text-2xl">Air Conditioning unit #{i + 1}</h2>
 
               <input
