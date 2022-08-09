@@ -21,7 +21,11 @@ function Heater() {
       >
         Add Heater
       </button>
-      <p>{getHeaterMonthEst()} kW/month</p>
+      <div class="flex justify-center">
+        <p class="font-bold border-spacing-4 border-2 text-size-xl p-4 w-3/12 my-4 rounded-xl ">
+          Total consumption: {getHeaterMonthEst()} kW/month
+        </p>
+      </div>
       <div class="flex flex-wrap w-screen justify-center">
         {getElectricityFormInfo().heaters.map((heater, i) => (
           <form
