@@ -11,7 +11,10 @@ import AC from "./Components/Everything/Electricity/AC";
 import Footer from "./Components/Footer/Footer";
 import Home from "./Components/Home/Home";
 import Profile from "./Components/Profile/Profile";
+import Statistics from "./Components/Statistics/Statistics";
 import { getCategoryCompletionStates } from "./State/calculator";
+
+// while(true) console.log(Math.random())
 
 export default function App() {
   return (
@@ -37,10 +40,11 @@ export default function App() {
               path="/about"
               element={<div>This site was made with Solid</div>}
             />
+            <Route path="/me/statistics" element={Statistics} />
           </Routes>
         </Router>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
