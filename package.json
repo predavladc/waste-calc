@@ -17,8 +17,13 @@
     "vite-plugin-solid": "^2.3.0"
   },
   "dependencies": {
+    "@kurkle/color": "^0.2.1",
     "@solidjs/router": "^0.4.2",
+    "chart.js": "^3.9.1",
+    "chartjs-adapter-luxon": "^1.2.0",
+    "luxon": "^3.0.1",
+    "solid-chart.js": "^1.0.7",
     "solid-icons": "^1.0.1",
-    "solid-js": "^1.4.7"
+    "solid-js": "^1.4.8"
   }
 }

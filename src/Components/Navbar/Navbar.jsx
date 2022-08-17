@@ -55,7 +55,7 @@ export default function Navbar() {
                 <a href="/me/overview">Waste Calc.</a>
               </li>
               <li className="border-b border-gray-400 my-8 uppercase">
-                <a href="/portfolio">Statistics</a>
+                <a href="/me/statistics">Statistics</a>
               </li>
               <li className="border-b border-gray-400 my-8 uppercase">
                 <a href="/contact">Settings</a>
@@ -74,7 +74,7 @@ export default function Navbar() {
             <a href="/me/overview">Waste Calc.</a>
           </li>
           <li>
-            <a href="/portfolio">Statistics</a>
+            <a href="/me/statistics">Statistics</a>
           </li>
           <li>
             <a href="/contact">Settings</a>

@@ -5,38 +5,18 @@ export const [getElectricityFormInfo, setElectricityFormInfo] = createSignal(
   localStorage.getItem("electricityFormInfo")
     ? JSON.parse(localStorage.getItem("electricityFormInfo"))
     : {
-        aircons: [
-          {
-            power: 900,
-            avgUsage: 3,
-          },
-        ],
-        fridges: [
-          {
-            power: 150,
-            avgUsage: 24,
-          },
-        ],
-        heaters: [
-          {
-            power: 4000,
-            avgUsage: 3,
-          },
-        ],
-        lights: [
-          {
-            power: 35,
-            avgUsage: 4,
-            type: BULB_TYPE_ENUM.Halogen,
-          },
-        ],
-        washingMachines: [
-          {
-            power: 500,
-            avgUsage: 1,
-          },
-        ],
+        aircons: [],
+        fridges: [],
+        heaters: [],
+        lights: [],
+        washingMachines: [],
       }
+);
+
+export const [getMonthlyStats, setMonthlyStats] = createSignal(
+  localStorage.getItem("monthlyStats")
+    ? JSON.parse(localStorage.getItem("monthlyStats"))
+    : {}
 );
 
 // electricity.aircons[5].power = 1000
@@ -96,6 +76,7 @@ export const addLight = () => {
       {
         power: 35,
         avgUsage: 4,
+        type: BULB_TYPE_ENUM.Halogen,
       },
     ],
   }));
@@ -261,33 +242,25 @@ export const [getCategoryCompletionStates, setCategoryCompletionStates] =
     "washing-machine": false,
   });
 
-export const getAirconMonthEst = getElectricityFormInfo().aircons.reduce(
-  (total, aircon) => {
+export const getAirconMonthEst = () =>
+  getElectricityFormInfo().aircons.reduce((total, aircon) => {
     return total + (aircon.power * aircon.avgUsage * 30) / 1000;
-  },
-  0
-);
+  }, 0);
 
-export const getfridgesPowerEst = getElectricityFormInfo().fridges.reduce(
-  (total, fridge) => {
+export const getfridgesPowerEst = () =>
+  getElectricityFormInfo().fridges.reduce((total, fridge) => {
     return Math.round(total + (fridge.power * fridge.avgUsage * 30) / 2 / 1000);
-  },
-  0
-);
+  }, 0);
 
-export const getHeaterMonthEst = getElectricityFormInfo().heaters.reduce(
-  (total, heater) => {
+export const getHeaterMonthEst = () =>
+  getElectricityFormInfo().heaters.reduce((total, heater) => {
     return Math.round(total + (heater.power * heater.avgUsage * 30) / 1000);
-  },
-  0
-);
-export const getLightMonthEst = getElectricityFormInfo().lights.reduce(
-  (total, light) => {
+  }, 0);
+export const getLightMonthEst = () =>
+  getElectricityFormInfo().lights.reduce((total, light) => {
     return Math.round(total + (light.power * light.avgUsage * 30) / 1000);
-  },
-  0
-);
-export const getWashingMachineEst =
+  }, 0);
+export const getWashingMachineEst = () =>
   getElectricityFormInfo().washingMachines.reduce((total, WashingMachine) => {
     return Math.round(
       total + (WashingMachine.power * WashingMachine.avgUsage * 30) / 1000
@@ -302,6 +275,11 @@ createEffect(
     ),
   [getElectricityFormInfo()]
 );
+createEffect(
+  () => localStorage.setItem("monthlyStats", JSON.stringify(getMonthlyStats())),
+  [getMonthlyStats()]
+);
+
 createEffect(
   () =>
     localStorage.setItem(
@@ -318,3 +296,20 @@ createEffect(
     ),
   [getCategoryCompletionStates()]
 );
+
+function calculateCurrentMonthStats() {
+  setMonthlyStats((prev) => ({
+    ...prev,
+    [new Date().getFullYear()]: {
+      ...prev[new Date().getFullYear()],
+      [new Date().getMonth()]: {
+        aircon: getAirconMonthEst(),
+        fridges: getfridgesPowerEst(),
+        heater: getHeaterMonthEst(),
+        light: getLightMonthEst(),
+        washingmachine: getWashingMachineEst(),
+      },
+    },
+  }));
+}
+createEffect(() => calculateCurrentMonthStats(), [getElectricityFormInfo()]);
