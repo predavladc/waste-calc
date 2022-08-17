@@ -4,7 +4,7 @@ import { Link } from "@solidjs/router";
 
 function ElecTotal() {
   return (
-    <div class="flex justify-center w-screen text-neutral-200 bg-neutral-800 h-screen text-center">
+    <div class="flex justify-center w-screen text-neutral-200 text-center">
       <div class="space-y-1 ">
         <p class="text-4xl  pt-3 ">You are currently using</p>
         <img
