@@ -16,7 +16,7 @@ function Lighting() {
   };
 
   return (
-    <div class="bg-neutral-800 text-neutral-200 snap-center min-h-screen pb-44">
+    <div class=" text-neutral-200 snap-center min-h-screen pb-44">
       <button
         class="text-2xl py-3 bg-green-600 m-3 p-4 hover:bg-green-900 rounded-2xl mt-4"
         onClick={addLight}
@@ -31,7 +31,7 @@ function Lighting() {
       <div class="flex flex-wrap w-screen justify-center">
         {getElectricityFormInfo().lights.map((light, i) => (
           <form
-            class=" flex flex-col  text-neutral-200 bg-neutral-800 text-center  md:w-3/6 w-5/6 justify-items-center px-3 py-3"
+            class=" flex flex-col  text-neutral-200  text-center  md:w-3/6 w-5/6 justify-items-center px-3 py-3"
             onSubmit={handleSubmit}
           >
             <div class="flex flex-col space-y-2">
@@ -73,11 +73,10 @@ function Lighting() {
                 <div>
                   <button
                     id="led"
-                    class={`p-3 px-6 border-4 rounded-lg m-1 ${
-                      light.type === BULB_TYPE_ENUM.LED
-                        ? "border-green-300"
-                        : "border-stone-200"
-                    }`}
+                    class={`p-3 px-6 border-4 rounded-lg m-1 ${light.type === BULB_TYPE_ENUM.LED
+                      ? "border-green-300"
+                      : "border-stone-200"
+                      }`}
                     onClick={function (e) {
                       console.log(`${BULB_TYPE_ENUM.LED} clicked.`);
                       tryingLightThing(i, "power", 5);
@@ -90,11 +89,10 @@ function Lighting() {
                 <div>
                   <button
                     id="halogen"
-                    class={`p-3 px-6 border-4 rounded-lg m-1 ${
-                      light.type === BULB_TYPE_ENUM.Halogen
-                        ? "border-green-300"
-                        : "border-stone-200"
-                    }`}
+                    class={`p-3 px-6 border-4 rounded-lg m-1 ${light.type === BULB_TYPE_ENUM.Halogen
+                      ? "border-green-300"
+                      : "border-stone-200"
+                      }`}
                     onClick={function (e) {
                       console.log(`${BULB_TYPE_ENUM.Halogen} clicked.`);
                       tryingLightThing(i, "power", 30);
@@ -107,11 +105,10 @@ function Lighting() {
                 <div>
                   <button
                     id="incandescent"
-                    class={`p-3 px-6 border-4 rounded-xl m-1  ${
-                      light.type === BULB_TYPE_ENUM.Incandescent
-                        ? "border-green-300"
-                        : "border-stone-200"
-                    }`}
+                    class={`p-3 px-6 border-4 rounded-xl m-1  ${light.type === BULB_TYPE_ENUM.Incandescent
+                      ? "border-green-300"
+                      : "border-stone-200"
+                      }`}
                     onClick={function (e) {
                       console.log(`${BULB_TYPE_ENUM.Incandescent} clicked.`);
                       tryingLightThing(i, "power", 60);
